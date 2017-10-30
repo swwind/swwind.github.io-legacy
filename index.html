@@ -173,6 +173,7 @@
 			k.animate({opacity: 1, marginTop: '10px'}, 1000);
 		}, i * 300);
 	})
+	var animating = false;
 	var max_page = $('.bk').length, now_page = Math.round((document.documentElement.scrollTop || document.body.scrollTop) / window.innerHeight);
 	var set_disable = function () {
 		if (now_page === 0) $('.page__up,.page__left').addClass('disable');
@@ -181,21 +182,29 @@
 	set_disable();
 	var position = ['left', 'right', 'top', 'bottom'];
 	var prev_page = function (pos = 2) {
+		if (now_page === 0 || animating) return false;
 		$('.page__down,.page__right').removeClass('disable');
-		if (now_page === 0) return false;
+		animating = true;
 		now_page --;
 		$('.bk').eq(now_page).css('animation', position[pos] + '-in .5s forwards');
 		$('.bk').eq(now_page + 1).css('animation', position[pos ^ 1] + '-out .5s forwards');
 		set_disable();
+		setTimeout(function() {
+			animating = false
+		}, 500);
 		return true;
 	}
 	var next_page = function (pos = 3) {
+		if (now_page === max_page - 1 || animating) return false;
 		$('.page__up,.page__left').removeClass('disable');
-		if (now_page === max_page - 1) return false;
+		animating = true;
 		now_page ++;
 		$('.bk').eq(now_page).css('animation', position[pos] + '-in .5s forwards');
 		$('.bk').eq(now_page - 1).css('animation', position[pos ^ 1] + '-out .5s forwards');
 		set_disable();
+		setTimeout(function() {
+			animating = false
+		}, 500);
 		return true;
 	}
 	$('.page__up').on('click', function () { prev_page(2) });
