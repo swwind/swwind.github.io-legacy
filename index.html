@@ -5,20 +5,19 @@
 	<title>据说这是首页</title>
 	<link rel="shortcut icon" href="/favicon.ico">
 	<style type="text/css">
-		body{padding: 0;margin: 0;font-family: SAO, Microsoft Yahei;}
-		.bk{position: absolute;height: 100%;width: 100%;text-align: center;color: #666;font-size: 20px;top: 100%;animation-fill-mode: forwards;}
+		body{padding: 0;margin: 0;font-family: SAO, Microsoft Yahei;background: #898989;}
+		.bk{position: absolute;height: 100%;width: 100%;text-align: center;color: #fff;font-size: 20px;top: 100%;animation-fill-mode: forwards;}
 		.bk:first-child{top: 0;}
 		.top-center{margin: auto 0;width: 100%;top: 0;bottom: 0;position: absolute;height: 70%;}
-		.bk h1{font-weight: lighter;font-size: 4rem;margin: 1rem 0;border-bottom: 1px solid #ccc;padding: 20px 0;}
+		.bk h1{font-weight: lighter;font-size: 4rem;margin: 1rem 0;padding: 20px 0;text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);}
 		.bk a{color: #999;text-decoration: none;border-bottom: 1px solid #999;transition: all .3s;}
-		.bk a:hover{color: #666;border-bottom-color: #666;transition: all .3s;}
-		html,body{overflow: hidden;}
-		.fxp-tb{position: fixed;height: 90px;width: 40px;bottom: 40px;right: 70px;text-align: center;}
-		.fxp-lr{position: fixed;height: 90px;width: 40px;bottom: 40px;right: 70px;text-align: center;transform: rotate(-90deg);}
+		.bk a:hover{color: #fff;border-bottom-color: #fff;transition: all .3s;}
+		html,body{overflow: hidden;height: 100%;width: 100%;}
+		.fxp{position: fixed;height: 90px;width: 40px;bottom: 40px;right: 70px;text-align: center;z-index: 10000;}
 		.page_up{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 20px solid rgba(0, 0, 0, .5);display: inline-block;}
 		.page_down{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-top: 20px solid rgba(0, 0, 0, .5);display: inline-block;}
-		.page__up,.page__left{padding: 10px;display: inline-block;width: 100%;box-sizing: border-box;cursor: pointer;height: 40px;}
-		.page__down,.page__right{padding: 10px;display: inline-block;width: 100%;box-sizing: border-box;cursor: pointer;height: 40px;position: absolute;bottom: 0;left: 0;}
+		.page__up{padding: 10px;display: inline-block;width: 100%;box-sizing: border-box;cursor: pointer;height: 40px;}
+		.page__down{padding: 10px;display: inline-block;width: 100%;box-sizing: border-box;cursor: pointer;height: 40px;position: absolute;bottom: 0;left: 0;}
 		.disable .page_up{border-bottom-color: rgba(0, 0, 0, .25);}
 		.disable .page_down{border-top-color: rgba(0, 0, 0, .25);}
 		.disable{cursor: default;}
@@ -26,90 +25,10 @@
 		.geci p{display: block;font-size: 2rem;margin: 0;opacity: 0;line-height: 1.5em;}
 		.geci .from{text-align: right;}
 		.geci .from:before{content: "——";font-family: Microsoft Yahei;}
-		.links{width: 100px;text-align: center;display: inline-block;position: relative;border: none;padding: 20px;box-shadow: 0 1px 5px #000;margin: 20px;padding-bottom:10px;color: #666 !important;cursor: pointer;font-size: 1.2em;user-select: none;}
-		.links:hover{transform: translateY(-5px);}
+		.links{width: 100px;text-align: center;display: inline-block;position: relative;border: none;padding: 20px;box-shadow: 0 1px 5px #000;margin: 20px;padding-bottom:10px;cursor: pointer;font-size: 1.2em;user-select: none;background-color: #fff;box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);}
+		.links:hover{transform: translateY(-5px);box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 11px 10px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 15px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.2), 0 30px 30px rgba(0, 0, 0, 0.15);}
 		.links img{width: 80px;height: 80px;}
-		.links p{margin: 5px;}
-		@keyframes right-in {
-			from {
-				top: 0;
-				left: 100%;
-			}
-			to {
-				top: 0;
-				left: 0;
-			}
-		}
-		@keyframes left-in {
-			from {
-				top: 0;
-				left: -100%;
-			}
-			to {
-				top: 0;
-				left: 0;
-			}
-		}
-		@keyframes bottom-in {
-			from {
-				top: 100%;
-				left: 0;
-			}
-			to {
-				top: 0;
-				left: 0;
-			}
-		}
-		@keyframes top-in {
-			from {
-				top: -100%;
-				left: 0;
-			}
-			to {
-				top: 0;
-				left: 0;
-			}
-		}
-		@keyframes left-out {
-			from {
-				top: 0;
-				left: 0;
-			}
-			to {
-				top: 0;
-				left: -100%;
-			}
-		}
-		@keyframes right-out {
-			from {
-				top: 0;
-				left: 0;
-			}
-			to {
-				top: 0;
-				left: 100%;
-			}
-		}
-		@keyframes top-out {
-			from {
-				top: 0;
-				left: 0;
-			}
-			to {
-				top: -100%;
-				left: 0;
-			}
-		}
-		@keyframes bottom-out {
-			from {
-				top: 0;
-				left: 0;
-			}
-			to {
-				top: 100%;
-				left: 0;
-			}
-		}
+		.links p{margin: 5px;color: #666;}
 		@font-face{
 			font-family: "SAO";
 			src: url(/font/sao.otf);
@@ -129,40 +48,32 @@
 </div>
 <div class="bk">
 	<div class="top-center">
-		<h1>Please ignore the picture above</h1>
+		<h1>Please Ignore The Picture Above</h1>
 		<p>In fact I want to put a picture of Sword Art Online on it but I didn't.</p>
 	</div>
 </div>
 <div class="bk">
 	<div class="top-center">
-		<h1>Who I am</h1>
+		<h1>Who I Am</h1>
 		<p>I'm a student from Shaoxing NO.1 high school.</p>
 		<p>Coding and Anime are two hobbies of my life.</p>
 	</div>
 </div>
 <div class="bk">
 	<div class="top-center">
-		<h1>Where you can find me</h1>
-		<a class="links" href="https://blog.coding.me"><img src="/img/blog.jpg"><p>My blog</p></a>
+		<h1>You Can Find Me At ...</h1>
+		<a class="links" href="https://blog.swwind.top"><img src="/img/blog.jpg"><p>My blog</p></a>
 		<a class="links" href="https://github.com/swwind"><img src="/img/github.svg"><p>GitHub</p></a>
 		<a class="links" href="https://twitter.com/swwind233"><img src="/img/twitter.png"><p>Twitter</p></a>
 		<a class="links" href="https://www.facebook.com/smith.jimmy.54966"><img src="/img/facebook.png"><p>Facebook</p></a>
 		<a class="links" href="https://space.bilibili.com/39681627/"><img src="/img/bilibili.png"><p>bilibili</p></a>
 	</div>
 </div>
-<div class="fxp-tb">
+<div class="fxp">
 	<div class="page__up">
 		<div class="page_up"></div>
 	</div>
 	<div class="page__down">
-		<div class="page_down"></div>
-	</div>
-</div>
-<div class="fxp-lr">
-	<div class="page__left">
-		<div class="page_up"></div>
-	</div>
-	<div class="page__right">
 		<div class="page_down"></div>
 	</div>
 </div>
@@ -173,54 +84,55 @@
 			k.animate({opacity: 1, marginTop: '10px'}, 1000);
 		}, i * 300);
 	})
-	var animating = false;
+	var animating = false, index = 100;
 	var max_page = $('.bk').length, now_page = Math.round((document.documentElement.scrollTop || document.body.scrollTop) / window.innerHeight);
 	var set_disable = function () {
-		if (now_page === 0) $('.page__up,.page__left').addClass('disable');
-		if (now_page === max_page - 1) $('.page__down,.page__right').addClass('disable');
+		if (now_page === 0) $('.page__up').addClass('disable');
+		if (now_page === max_page - 1) $('.page__down').addClass('disable');
 	}
 	set_disable();
-	var position = ['left', 'right', 'top', 'bottom'];
-	var prev_page = function (pos = 2) {
+	var prev_page = function () {
 		if (now_page === 0 || animating) return false;
-		$('.page__down,.page__right').removeClass('disable');
+		$('.page__down').removeClass('disable');
 		animating = true;
 		now_page --;
-		$('.bk').eq(now_page).css('animation', position[pos] + '-in .5s forwards');
-		$('.bk').eq(now_page + 1).css('animation', position[pos ^ 1] + '-out .5s forwards');
+		$('.bk').stop(true);
+		$('.bk').each(function (i) {
+			if (i === now_page) $(this).animate({top: 0, opacity: 1}, 500).css('z-index', ++ index);
+			else if (i < now_page) $(this).animate({top: '-50%', opacity: 0}, 500);
+			else $(this).animate({top: '50%', opacity: 0}, i == now_page + 1 ? 500 : 250);
+		})
 		set_disable();
 		setTimeout(function() {
 			animating = false
-		}, 500);
+		}, 250);
 		return true;
 	}
-	var next_page = function (pos = 3) {
+	var next_page = function () {
 		if (now_page === max_page - 1 || animating) return false;
-		$('.page__up,.page__left').removeClass('disable');
+		$('.page__up').removeClass('disable');
 		animating = true;
 		now_page ++;
-		$('.bk').eq(now_page).css('animation', position[pos] + '-in .5s forwards');
-		$('.bk').eq(now_page - 1).css('animation', position[pos ^ 1] + '-out .5s forwards');
+		$('.bk').stop(true);
+		$('.bk').each(function (i) {
+			if (i === now_page) $(this).animate({top: 0, opacity: 1}, 500).css('z-index', ++ index);
+			else if (i < now_page) $(this).animate({top: '-50%', opacity: 0}, i === now_page - 1 ? 500 : 250);
+			else $(this).animate({top: '50%', opacity: 0}, 500);
+		})
 		set_disable();
 		setTimeout(function() {
 			animating = false
-		}, 500);
+		}, 250);
 		return true;
 	}
-	$('.page__up').on('click', function () { prev_page(2) });
-	$('.page__down').on('click', function () { next_page(3) });
-	$('.page__left').on('click', function () { prev_page(0) });
-	$('.page__right').on('click', function () { next_page(1) });
+	$('.page__up').on('click', prev_page);
+	$('.page__down').on('click', next_page);
 	window.onkeydown = function (e) {
 		var bt = e.keyCode || e.witch;
-		if (bt == 37 || bt == 65)
-			return prev_page(0);
-		if (bt == 38 || bt == 87)
-			return prev_page(2);
-		if (bt == 39 || bt == 68)
-			return next_page(1);
-		if (bt == 40 || bt == 83)
-			return next_page(3);
+		if (bt == 37 || bt == 38)
+			return prev_page();
+		if (bt == 39 || bt == 40)
+			return next_page();
 		return true;
 	}
 	window.onmousewheel = function (e) {
