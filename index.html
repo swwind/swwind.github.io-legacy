@@ -33,10 +33,13 @@
 		.links p{margin: 5px;color: #666;}
 		@font-face{
 			font-family: "SAO";
-			src: url(/font/sao.otf);
+			src: url(./font/sao.otf);
 		}
+		.bf{opacity: 0;top: -50%;transition: all .5s;}
+		.nw{opacity: 1;top: 0;transition: all .5s;}
+		.af{opacity: 0;top: 50%;transition: all .5s;}
 	</style>
-	<script src="/js/jquery-2.0.3.min.js"></script>
+	<script src="./js/jquery-2.0.3.min.js"></script>
 </head>
 <body>
 <div class="bk" style="background: url(https://i.loli.net/2017/10/26/59f1dd1992e08.jpg) center center no-repeat;background-size: cover;">
@@ -64,11 +67,11 @@
 <div class="bk">
 	<div class="top-center better-font">
 		<h1>You Can Find Me On ...</h1>
-		<a class="links" href="https://blog.swwind.top"><img src="/img/blog.jpg"><p>My blog</p></a>
-		<a class="links" href="https://github.com/swwind"><img src="/img/github.svg"><p>GitHub</p></a>
-		<a class="links" href="https://twitter.com/swwind233"><img src="/img/twitter.png"><p>Twitter</p></a>
-		<a class="links" href="https://www.facebook.com/smith.jimmy.54966"><img src="/img/facebook.png"><p>Facebook</p></a>
-		<a class="links" href="https://space.bilibili.com/39681627/"><img src="/img/bilibili.png"><p>bilibili</p></a>
+		<a class="links" href="https://blog.swwind.top"><img src="./img/blog.jpg"><p>My blog</p></a>
+		<a class="links" href="https://github.com/swwind"><img src="./img/github.svg"><p>GitHub</p></a>
+		<a class="links" href="https://twitter.com/swwind233"><img src="./img/twitter.png"><p>Twitter</p></a>
+		<a class="links" href="https://www.facebook.com/smith.jimmy.54966"><img src="./img/facebook.png"><p>Facebook</p></a>
+		<a class="links" href="https://space.bilibili.com/39681627/"><img src="./img/bilibili.png"><p>bilibili</p></a>
 	</div>
 </div>
 <div class="fxp">
@@ -86,45 +89,36 @@
 			k.animate({opacity: 1, marginTop: '10px'}, 1000);
 		}, i * 300);
 	})
-	var animating = false, index = 100;
-	var max_page = $('.bk').length, now_page = Math.round((document.documentElement.scrollTop || document.body.scrollTop) / window.innerHeight);
+	var max_page = $('.bk').length, now_page = 0;
 	var set_disable = function () {
 		if (now_page === 0) $('.page__up').addClass('disable');
 		if (now_page === max_page - 1) $('.page__down').addClass('disable');
 	}
-	set_disable();
+	$('.page__up').addClass('disable');
 	var prev_page = function () {
-		if (now_page === 0 || animating) return false;
+		if (now_page === 0) return false;
 		$('.page__down').removeClass('disable');
-		animating = true;
 		now_page --;
-		$('.bk').stop(true);
 		$('.bk').each(function (i) {
-			if (i === now_page) $(this).animate({top: 0, opacity: 1}, 500).css('z-index', ++ index);
-			else if (i < now_page) $(this).animate({top: '-50%', opacity: 0}, 500);
-			else $(this).animate({top: '50%', opacity: 0}, i == now_page + 1 ? 500 : 250);
+			$(this).attr('class', 'bk');
+			if (i === now_page) $(this).addClass('nw');
+			if (i  <  now_page) $(this).addClass('bf');
+			if (i  >  now_page) $(this).addClass('af');
 		})
 		set_disable();
-		setTimeout(function() {
-			animating = false
-		}, 250);
 		return true;
 	}
 	var next_page = function () {
-		if (now_page === max_page - 1 || animating) return false;
+		if (now_page === max_page - 1) return false;
 		$('.page__up').removeClass('disable');
-		animating = true;
 		now_page ++;
-		$('.bk').stop(true);
 		$('.bk').each(function (i) {
-			if (i === now_page) $(this).animate({top: 0, opacity: 1}, 500).css('z-index', ++ index);
-			else if (i < now_page) $(this).animate({top: '-50%', opacity: 0}, i === now_page - 1 ? 500 : 250);
-			else $(this).animate({top: '50%', opacity: 0}, 500);
+			$(this).attr('class', 'bk');
+			if (i === now_page) $(this).addClass('nw');
+			if (i  <  now_page) $(this).addClass('bf');
+			if (i  >  now_page) $(this).addClass('af');
 		})
 		set_disable();
-		setTimeout(function() {
-			animating = false
-		}, 250);
 		return true;
 	}
 	$('.page__up').on('click', prev_page);
