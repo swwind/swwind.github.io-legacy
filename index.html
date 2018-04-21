@@ -1,143 +1,105 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-	<meta charset="utf-8">
-	<title>据说这是首页</title>
-	<link rel="shortcut icon" href="/favicon.ico">
-	<style type="text/css">
-		body{padding: 0;margin: 0;font-family: SAO, Microsoft Yahei;background: #898989;}
-		.bk{position: absolute;height: 100%;width: 100%;text-align: center;color: #fff;font-size: 20px;top: 100%;animation-fill-mode: forwards;}
-		.bk:first-child{top: 0;}
-		.top-center{margin: auto 0;width: 100%;top: 0;bottom: 0;position: absolute;height: 70%;}
-		.bk h1{font-weight: lighter;font-size: 4rem;margin: 1rem 0;padding: 20px 0;}
-		.better-font>h1{text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);}
-		.better-font>p{text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);font-size: 1.5rem;}
-		.bk a{color: #999;text-decoration: none;border-bottom: 1px solid #999;transition: all .3s;}
-		.bk a:hover{color: #fff;border-bottom-color: #fff;transition: all .3s;}
-		html,body{overflow: hidden;height: 100%;width: 100%;}
-		.fxp{position: fixed;height: 90px;width: 40px;bottom: 40px;right: 70px;text-align: center;z-index: 10000;}
-		.page_up{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 20px solid rgba(0, 0, 0, .5);display: inline-block;}
-		.page_down{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-top: 20px solid rgba(0, 0, 0, .5);display: inline-block;}
-		.page__up{padding: 10px;display: inline-block;width: 100%;box-sizing: border-box;cursor: pointer;height: 40px;}
-		.page__down{padding: 10px;display: inline-block;width: 100%;box-sizing: border-box;cursor: pointer;height: 40px;position: absolute;bottom: 0;left: 0;}
-		.disable .page_up{border-bottom-color: rgba(0, 0, 0, .25);}
-		.disable .page_down{border-top-color: rgba(0, 0, 0, .25);}
-		.disable{cursor: default;}
-		.geci{position: absolute;top: 100px;left: 100px;text-align: left;width: 50%;color: white;font-family: Meiryo;text-shadow: 0 0 2px #000;}
-		.geci p{display: block;font-size: 2rem;margin: 0;opacity: 0;line-height: 1.5em;}
-		.geci .from{text-align: right;}
-		.geci .from:before{content: "——";font-family: Microsoft Yahei;}
-		.links{width: 100px;text-align: center;display: inline-block;position: relative;border: none;padding: 20px;box-shadow: 0 1px 5px #000;margin: 20px;padding-bottom:10px;cursor: pointer;font-size: 1.2em;user-select: none;background-color: #fff;box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);}
-		.links:hover{transform: translateY(-5px);box-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 11px 10px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.1), 0 6px 15px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.2), 0 30px 30px rgba(0, 0, 0, 0.15);}
-		.links img{width: 80px;height: 80px;}
-		.links p{margin: 5px;color: #666;}
-		@font-face{
-			font-family: "SAO";
-			src: url(./font/sao.otf);
-		}
-		.bf{opacity: 0;top: -50%;transition: all .5s;}
-		.nw{opacity: 1;top: 0;transition: all .5s;}
-		.af{opacity: 0;top: 50%;transition: all .5s;}
-		.bg-image{background: url(https://i.loli.net/2018/02/20/5a8bce074a5d7.jpg) center center no-repeat;background-size: cover;width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: -1;}
-	</style>
-	<script src="./js/jquery-2.0.3.min.js"></script>
+  <meta charset="utf-8">
+  <title>SW_Wind 的个人首页</title>
+  <script src="https://cdn.bootcss.com/matter-js/0.12.0/matter.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+  <style type="text/css">
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .text {
+      font-family: 'Gugi', cursive;
+      position: absolute;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
-	<div class="bg-image"></div>
-	<div class="bk nw" style="background: url(https://i.loli.net/2017/10/26/59f1dd1992e08.jpg) center center no-repeat;background-size: cover;">
-		<div class="geci">
-			<p>そんな優しくしないで</p>
-			<p>どんな顔すればいいの？</p>
-			<p>積み重ねた言葉で見えないよ</p>
-			<p>君の横顔</p>
-			<p class="from">「俺の妹がこんなに可愛いわけがない」</p>
-		</div>
-	</div>
-	<div class="bk af">
-		<div class="top-center better-font">
-			<h1>Please Ignore The Picture Above</h1>
-			<p>In fact I want to put a picture of Sword Art Online on it but I didn't.</p>
-		</div>
-	</div>
-	<div class="bk af">
-		<div class="top-center better-font">
-			<h1>Who I Am</h1>
-			<p>I'm a student from Shaoxing NO.1 high school.</p>
-			<p>Coding and Anime are two hobbies of my life.</p>
-		</div>
-	</div>
-	<div class="bk af">
-		<div class="top-center better-font">
-			<h1>You Can Find Me On ...</h1>
-			<a class="links" href="https://blog.swwind.top"><img src="./img/blog.jpg"><p>My blog</p></a>
-			<a class="links" href="https://github.com/swwind"><img src="./img/github.svg"><p>GitHub</p></a>
-			<a class="links" href="https://twitter.com/swwind233"><img src="./img/twitter.png"><p>Twitter</p></a>
-			<a class="links" href="https://www.facebook.com/smith.jimmy.54966"><img src="./img/facebook.png"><p>Facebook</p></a><br>
-			<a class="links" href="https://space.bilibili.com/39681627/"><img src="./img/bilibili.png"><p>bilibili</p></a>
-			<a class="links" href="https://t.me/swwind"><img src="./img/telegram.png"><p>Telegram</p></a>
-			<a class="links" href="https://steamcommunity.com/id/swwind233"><img src="./img/steam.png"><p>Steam</p></a>
-		</div>
-	</div>
-	<div class="fxp">
-		<div class="page__up">
-			<div class="page_up"></div>
-		</div>
-		<div class="page__down">
-			<div class="page_down"></div>
-		</div>
-	</div>
+  <p class="text" style="top: 20px;left: 20px;">Coming soon...<br>Powered by Matter.js</p>
 <script type="text/javascript">
-	$('.geci').children('p').each(function (i) {
-		var k = $(this);
-		setTimeout(function () {
-			k.animate({opacity: 1, marginTop: '10px'}, 1000);
-		}, i * 300);
-	})
-	var max_page = $('.bk').length, now_page = 0;
-	var set_disable = function () {
-		if (now_page === 0) $('.page__up').addClass('disable');
-		if (now_page === max_page - 1) $('.page__down').addClass('disable');
-	}
-	$('.page__up').addClass('disable');
-	var prev_page = function () {
-		if (now_page === 0) return false;
-		$('.page__down').removeClass('disable');
-		now_page --;
-		$('.bk').each(function (i) {
-			$(this).attr('class', 'bk');
-			if (i === now_page) $(this).addClass('nw');
-			if (i  <  now_page) $(this).addClass('bf');
-			if (i  >  now_page) $(this).addClass('af');
-		})
-		set_disable();
-		return true;
-	}
-	var next_page = function () {
-		if (now_page === max_page - 1) return false;
-		$('.page__up').removeClass('disable');
-		now_page ++;
-		$('.bk').each(function (i) {
-			$(this).attr('class', 'bk');
-			if (i === now_page) $(this).addClass('nw');
-			if (i  <  now_page) $(this).addClass('bf');
-			if (i  >  now_page) $(this).addClass('af');
-		})
-		set_disable();
-		return true;
-	}
-	$('.page__up').on('click', prev_page);
-	$('.page__down').on('click', next_page);
-	window.onkeydown = function (e) {
-		var bt = e.keyCode || e.witch;
-		if (bt == 37 || bt == 38)
-			return prev_page();
-		if (bt == 39 || bt == 40)
-			return next_page();
-		return true;
-	}
-	window.onmousewheel = function (e) {
-		return e.deltaY > 0 ? next_page() : prev_page();
-	}
+var Engine = Matter.Engine;
+var Render = Matter.Render;
+var Bodies = Matter.Bodies;
+var Events = Matter.Events;
+var World  = Matter.World;
+var Body   = Matter.Body;
+
+var engine = Engine.create();
+
+var render = Render.create({
+  element: document.body,
+  engine: engine,
+  options: {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    background: 'rgba(255, 255, 255, 0)',
+    wireframes: false
+  }
+});
+
+var groundHeight = 150;
+
+// 创建刚体
+var rect = Bodies.circle(300, 100, 25, { restitution: .5 }), // 矩形
+    // circle = Bodies.rectangle(200, 100, 50, 50), // 圆
+    // polygon = Bodies.polygon(450, 100, 5, 25), // 多边形
+    // trapezoid = Bodies.trapezoid(590, 100, 50, 50, 3); // 梯形
+    ground = Bodies.rectangle(window.innerWidth / 2, window.innerHeight - groundHeight / 2, window.innerWidth, groundHeight, { isStatic: true })
+
+// 将刚体添加到世界中
+World.add(engine.world, [rect, ground]);
+
+var keydown = {
+  left: false,
+  right: false,
+  up: false,
+  down: false
+}
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'ArrowRight' || e.key === 'd') {
+    !keydown.right && Body.applyForce(rect, rect.position, {x: .05, y: 0});
+    keydown.right = true;
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'a') {
+    !keydown.left && Body.applyForce(rect, rect.position, {x: -.05, y: 0});
+    keydown.left = true;
+  }
+  if (e.key === 'ArrowUp' || e.key === 'w') {
+    !keydown.up && Body.applyForce(rect, rect.position, {x: 0, y: -.05});
+    keydown.up = true;
+  }
+  if (e.key === 'ArrowDown' || e.key === 's') {
+    !keydown.down && Body.applyForce(rect, rect.position, {x: 0, y: .05});
+    keydown.down = true;
+  }
+})
+document.addEventListener('keyup', function (e) {
+  if (e.key === 'ArrowRight' || e.key === 'd') {
+    keydown.right = false;
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'a') {
+    keydown.left = false;
+  }
+  if (e.key === 'ArrowUp' || e.key === 'w') {
+    keydown.up = false;
+  }
+  if (e.key === 'ArrowDown' || e.key === 's') {
+    keydown.down = false;
+  }
+})
+
+Engine.run(engine);
+Render.run(render);
 </script>
 </body>
 </html>
