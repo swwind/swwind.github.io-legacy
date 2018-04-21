@@ -7,3 +7,4 @@
 * Start Writing
   * [Page config](page-config.md)
   * [Useful things](useful-things.md)
+  * [Useful functions](useful-functions.md)
