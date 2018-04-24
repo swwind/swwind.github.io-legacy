@@ -24,6 +24,7 @@
       animation: shake 50s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
+      white-space: pre;
     }
     @keyframes shake {
       2% { transform: translate(0.5px, -1.5px) rotate(-0.5deg); }
@@ -80,8 +81,15 @@
   </style>
 </head>
 <body>
-  <p class="text" style="top: 20px;left: 20px;">Coming soon...<br>Powered by Matter.js</p>
+  <p class="text" style="top: 20px;left: 20px;"></p>
 <script type="text/javascript">
+
+var show = function (en, ja) {
+  ja = ja || "";
+  document.querySelector('p.text').innerHTML = en + '<br>' + ja;
+}
+show('Welcome to swwind\'s homepage. =￣ω￣=\nCan you reach the other side?')
+
 var Engine = Matter.Engine;
 var Render = Matter.Render;
 var Bodies = Matter.Bodies;
@@ -114,19 +122,24 @@ var rect = Bodies.circle(300, 100, 25, { restitution: .5 }), // 圆
     // polygon = Bodies.polygon(450, 100, 5, 25), // 多边形
     // trapezoid = Bodies.trapezoid(590, 100, 50, 50, 3); // 梯形
     ground = Bodies.rectangle(window.innerWidth / 2, window.innerHeight - groundHeight / 2, window.innerWidth, groundHeight, { isStatic: true }),
-    wall = [];
+    wall = [
+      Bodies.rectangle(800, 100, 500, 200, { isStatic: true }),
+    ],
+    walls = [
+      Bodies.rectangle(window.innerWidth / 2, -50, window.innerWidth, 100, { isStatic: true }),
+      Bodies.rectangle(-50, window.innerHeight / 2, 100, window.innerHeight, { isStatic: true }),
+      Bodies.rectangle(window.innerWidth + 50, window.innerHeight / 2, 100, window.innerHeight, { isStatic: true }),
+      Bodies.rectangle(800, 250 + (window.innerHeight - groundHeight - 250) / 2, 500, window.innerHeight - groundHeight - 250, { isStatic: true }),
+    ]
 
-for (var i = 0; i < 5; ++ i) {
-  wall.push(Bodies.rectangle(
-    Math.random() * window.innerWidth,
-    Math.random() * (window.innerHeight - groundHeight),
-    Math.random() * (maxWidth - minWidth) + minWidth,
-    Math.random() * (maxHeight - minHeight) + minHeight,
-    { isStatic: true }));
-}
+wall.forEach(x => x.render.fillStyle = '#e61863');
+
+var pass = Bodies.rectangle(window.innerWidth - (window.innerWidth - 1050) / 2, window.innerHeight - groundHeight - 50, window.innerWidth - 1050, 100, { render: { fillStyle: '#66ccff' } })
 
 // 将刚体添加到世界中
-World.add(engine.world, [rect, ground, ...wall]);
+World.add(engine.world, [rect, ground, pass]);
+World.add(engine.world, wall);
+World.add(engine.world, walls);
 
 var keydown = {
   left: false,
@@ -171,17 +184,37 @@ var has = function (e, a) {
     if (a[i] === e) return true;
   return false;
 }
-var checkDeath = function (a) {
+var check = function (a) {
   for (var i in a) {
-    if (a[i][0] === rect && has(a[i][1], wall))
-      return true;
+    if (a[i][0] === rect) {
+      if (has(a[i][1], wall))
+        return 'die';
+      if (a[i][1] === pass)
+        return 'pass';
+    }
   }
   return false;
 }
+
+var dieTimes = 0;
 Events.on(engine, 'collisionStart', function (e) {
-  if (checkDeath(e.source.broadphase.pairs)) {
-    rect = Bodies.circle(300, 100, 25, { restitution: .5 });
-    World.add(engine.world, rect);
+  switch (check(e.source.broadphase.pairs)) {
+    case 'die': {
+      ++ dieTimes;
+      if (dieTimes === 1) {
+        show('When you hit the red wall, you will die')
+      }
+      if (dieTimes === 50) {
+        show('Come on, man! You should hurry now!')
+      }
+      rect = Bodies.circle(300, 100, 25, { restitution: .5 });
+      World.add(engine.world, rect);
+      break;
+    }
+    case 'pass': {
+      show('Congratulation!\nYou win the game with ' + dieTimes + ' times try.\nMy blog is here -> https://blog.swwind.top');
+      break;
+    }
   }
 })
 
