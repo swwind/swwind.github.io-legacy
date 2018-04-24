@@ -186,12 +186,10 @@ var has = function (e, a) {
 }
 var check = function (a) {
   for (var i in a) {
-    if (a[i][0] === rect) {
-      if (has(a[i][1], wall))
-        return 'die';
-      if (a[i][1] === pass)
-        return 'pass';
-    }
+    if (a[i][0] === rect && has(a[i][1], wall))
+      return 'die';
+    if (a[i][0].label === 'Circle Body' && a[i][1] === pass)
+      return 'pass';
   }
   return false;
 }
