@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hello world</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
+  <style type="text/css">
+    div.container {
+      width: 500px;
+      height: 700px;
+      margin: auto;
+      border: 1px solid #00000066;
+      cursor: crosshair;
+    }
+    div.scoreboard {
+      position: fixed;
+      display: inline-block;
+      left: 20px;
+      top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <script src="/game/game.js"></script>
+  <div class="scoreboard">
+    Balls: <span class="balls">10</span><br>
+    Score: <span class="score">0</span>
+  </div>
+</body>
+</html>
