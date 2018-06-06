@@ -1,3 +1,5 @@
+{% raw %}
+
 # Useful things
 
 The biggest advantage of the Roigu Theme is that it has a lot of interesting things which you can used in your post.
@@ -63,3 +65,5 @@ What he/she said...
 ```
 
 P.S. This is not a video player but a card links to the video. Why? Because of whitelist.
+
+{% endraw %}
