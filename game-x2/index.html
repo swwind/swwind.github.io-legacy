@@ -10,6 +10,8 @@
       height: 700px;
       margin: auto;
       border: 1px solid #00000066;
+    }
+    canvas {
       cursor: crosshair;
     }
     div.scoreboard {
@@ -18,14 +20,27 @@
       left: 20px;
       top: 20px;
     }
+    div.howtoplay {
+      position: fixed;
+      display: inline-block;
+      left: 20px;
+      top: 100px;
+    }
   </style>
 </head>
 <body>
   <div class="container"></div>
-  <script src="/game/game.js"></script>
+  <script src="/game-x2/game.js"></script>
   <div class="scoreboard">
     Balls: <span class="balls">10</span><br>
-    Score: <span class="score">0</span>
+    Score: <span class="score">0</span><br>
+  </div>
+  <div class="howtoplay">
+    <details>
+      <summary>How to play?</summary>
+      Read the source code <a href="https://github.com/swwind/swwind.github.io/tree/master/game" target="_view">on GitHub</a>.<br>
+      <b>DO NOT RAN OUT OF YOUR BALLS!</b>
+    </details>
   </div>
 </body>
 </html>
