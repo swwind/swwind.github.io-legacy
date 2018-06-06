@@ -173,7 +173,7 @@ const flush = () => {
     tips.push(randomType());
   }
   tips = random_shuffle(tips);
-  let cnt = 0;
+  let cnt = -1;
   for (let i = 100; i < 700; i += 100) {
     let item = randomBody(125, i, tips[++ cnt]);
     World.add(engine.world, item);
