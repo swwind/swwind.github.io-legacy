@@ -109,7 +109,7 @@ const addBall = (delta) => {
   if (died) return;
   let el = document.querySelector('span.balls');
   el.innerHTML = balls += delta;
-  if (balls < 0) {
+  if (balls <= 0) {
     alert('game over!');
     died = true;
   }
@@ -117,7 +117,7 @@ const addBall = (delta) => {
 
 const zz = 500;
 const startTurn = (x, y, ball = balls) => {
-  if (balls < 0) return;
+  if (balls <= 0) return;
   let nx = x / 100000;
   let ny = y / 100000;
   let rect = Bodies.circle(250, 20, 5, BALL);
