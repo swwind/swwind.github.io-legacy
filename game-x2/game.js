@@ -29,8 +29,11 @@ const WALL = {
   friction: 0,
   frictionStatic: 0,
   render: { fillStyle: '#000000' },
-  onCollision: (ball) => {
+  onCollision: (ball, _this) => {
     addScore(1);
+    setTimeout(() => {
+      World.remove(engine.world, _this);
+    }, 20);
   }
 }
 const ADLL = {
@@ -38,8 +41,11 @@ const ADLL = {
   friction: 0,
   frictionStatic: 0,
   render: { fillStyle: '#00ff66' },
-  onCollision: (ball) => {
+  onCollision: (ball, _this) => {
     addBall(1);
+    setTimeout(() => {
+      World.remove(engine.world, _this);
+    }, 20);
   }
 }
 const DELL = {
@@ -47,8 +53,11 @@ const DELL = {
   friction: 0,
   frictionStatic: 0,
   render: { fillStyle: '#ff6666' },
-  onCollision: (ball) => {
+  onCollision: (ball, _this) => {
     World.remove(engine.world, ball);
+    setTimeout(() => {
+      World.remove(engine.world, _this);
+    }, 20);
     for (let item of engine.world.bodies) {
       if (item.name === 'BALL' && !Math.floor(Math.random() * 10)) {
         World.remove(engine.world, item);
@@ -73,10 +82,10 @@ const BALL = { restitution: 1, frictionAir: .001, name: 'BALL', friction: 0, fri
 // polygon = Bodies.polygon(450, 100, 5, 25), // 多边形
 // trapezoid = Bodies.trapezoid(590, 100, 50, 50, 3); // 梯形
 
-const g1 = Bodies.rectangle(-25, 350, 50, 700, WALL);
-const g2 = Bodies.rectangle(250, 725, 500, 50, WALL);
-const g3 = Bodies.rectangle(525, 350, 50, 700, WALL);
-const g4 = Bodies.rectangle(250, -25, 500, 50, WALL);
+const g1 = Bodies.rectangle(-25, 350, 50, 700, { isStatic: true });
+const g2 = Bodies.rectangle(250, 725, 500, 50, { isStatic: true });
+const g3 = Bodies.rectangle(525, 350, 50, 700, { isStatic: true });
+const g4 = Bodies.rectangle(250, -25, 500, 50, { isStatic: true });
 
 World.add(engine.world, [g1, g2, g3, g4]);
 
@@ -100,7 +109,7 @@ const addBall = (delta) => {
   if (died) return;
   let el = document.querySelector('span.balls');
   el.innerHTML = balls += delta;
-  if (!balls) {
+  if (balls < 0) {
     alert('game over!');
     died = true;
   }
@@ -108,7 +117,7 @@ const addBall = (delta) => {
 
 const zz = 500;
 const startTurn = (x, y, ball = balls) => {
-  if (!balls) return;
+  if (balls < 0) return;
   let nx = x / 100000;
   let ny = y / 100000;
   let rect = Bodies.circle(250, 20, 5, BALL);
@@ -130,8 +139,8 @@ Events.on(engine, 'collisionStart', (e) => {
   let pairs = e.source.broadphase.pairs;
   for (var g in pairs) {
     const [a, b] = pairs[g];
-    b.onCollision && b.onCollision(a);
-    a.onCollision && a.onCollision(b);
+    b.onCollision && b.onCollision(a, b);
+    a.onCollision && a.onCollision(b, a);
   }
 })
 
@@ -169,7 +178,7 @@ const flush = () => {
   tips = [];
   tips.push(FLSH); tips.push(ADLL);
   tips.push(DELL); tips.push(WALL);
-  while (tips.length < 18) {
+  while (tips.length < 17) {
     tips.push(randomType());
   }
   tips = random_shuffle(tips);
@@ -192,6 +201,13 @@ const flush = () => {
 }
 flush();
 
-setInterval(() => {
-  addBall(- (~~(balls * 0.1)))
-}, 1000)
+// addBall(Infinity);
+// setInterval(() => startTurn(Math.sin((new Date)/1000) * 100, Math.abs(Math.cos((new Date)/1000) * 100)), 100);
+
+
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'KeyR') {
+    addBall(-2);
+    flush();
+  }
+})
