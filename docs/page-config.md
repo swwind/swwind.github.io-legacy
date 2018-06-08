@@ -77,5 +77,5 @@ Idea from <https://moegirl.org>
 
 Value: `string`
 
-A big warning in the top of the article.
+A big warning at the top of the article.
 

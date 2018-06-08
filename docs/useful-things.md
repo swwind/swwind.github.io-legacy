@@ -2,7 +2,7 @@
 
 The biggest advantage of the Roigu Theme is that it has a lot of interesting things which you can used in your post.
 
-If you have more great idea, welcome to submit pull request!
+If you have more great ideas, welcome to submit your pull request!
 
 ## Special classes
 
@@ -14,7 +14,7 @@ It represents the truth that you want others to know.
 <span class="truth">Hey boy!</span>
 ```
 
-It will be rendered with black background and black text color. If you move your mouse over it, the color of text will become white and then you can see the words in it.
+It will be rendered with black background and black text color. If you move your mouse hover it, the color of text will become white and then you can see the words in it.
 
 Idea from <https://moegirl.org>
 
@@ -62,4 +62,4 @@ What he/she said...
 {% bilibili aid [pid] %}
 ```
 
-P.S. This is not a video player but a card links to the video. Why? Because of whitelist.
+P.S. This is not a video player but a card links to the video. The whitelist was not friendly to us.

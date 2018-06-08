@@ -44,7 +44,7 @@ fly(top[, time[, timing_function]])
 
   Animate timing function. 0% = 0, 100% = 1.
 
-  Default to `x => x^2 / (x^2 + (1-x)^2)`
+  Default to $$f(x)=\frac{x^2}{x^2+(1-x)^2}$$
 
 
 
