@@ -37,27 +37,33 @@ The categories of the post/page.
 
 ## Special configs
 
-### comments
+### comments :: Bool
 
-Value: `boolean=true`.
+Default: `true`
 
 Whether to allow comments on this page if you have a comment system.
 
-### toc
+### toc :: Bool
 
-Value: `boolean=true`.
+Default: `true`
 
-Article directories.
+Enable article directories.
 
-### mathjax
+### list_number :: Bool
 
-Value: `boolean=true`.
+Default: `true`
 
-Whether to allow mathjax on this page.
+Enable TOC list numbers if toc is enable.
 
-### desc
+### mathjax :: Bool
 
-Value: `string`.
+Default: `true`.
+
+Enable mathjax on this page.
+
+### desc :: String
+
+Default: `undefined`.
 
 Artical description.
 
@@ -67,7 +73,7 @@ Artical description.
 
 ### sora
 
-Value: `boolean=false`.
+Default: `boolean=false`.
 
 A template means that this post/page is about sisters.
 
@@ -75,7 +81,7 @@ Idea from <https://moegirl.org>
 
 ### warning
 
-Value: `string`
+Default: `string`
 
 A big warning at the top of the article.
 
