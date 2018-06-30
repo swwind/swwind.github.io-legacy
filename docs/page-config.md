@@ -71,17 +71,17 @@ Artical description.
 
 ## Magicial configs
 
-### sora
+### sora :: Bool
 
-Default: `boolean=false`.
+Default: `false`.
 
 A template means that this post/page is about sisters.
 
 Idea from <https://moegirl.org>
 
-### warning
+### warning :: String
 
-Default: `string`
+Default: `undefined`
 
 A big warning at the top of the article.
 
