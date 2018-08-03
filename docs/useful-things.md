@@ -63,3 +63,11 @@ What he/she said...
 ```
 
 P.S. This is not a video player but a card links to the video. The whitelist was not friendly to us.
+
+### bilibili video
+
+```markdown
+{% bilibilivideo aid [pid] %}
+```
+
+This is the real player.
