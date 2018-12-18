@@ -144,26 +144,17 @@
                   <a href="javascript:;" class="button submit" id="like-button"><i class="icon fa-heart" style="color: #ff3f58;"></i>&nbsp;<span id="like-numbers">0</span></a>
                   <script src="https://cdn1.lncld.net/static/js/3.6.4/av-min.js"></script>
                   <script type="text/javascript">
-                    AV.init('Xg0skcXL3ifVW7K0SFKTFCzE-gzGzoHsz', 'Hd5RR4oB6dkRi9n8mrKcQMXB');
-                    var query = new AV.Query('Like');
-                    var el = document.querySelector('span#like-numbers')
+                    var el = document.querySelector('span#like-numbers');
+                    el.innerText = 'LOADING...';
+                    fetch('https://blog.swwind.me/query/bGlrZQ')
+                    .then(res => res.json())
+                    .then(res => el.innerText = res.data);
                     document.querySelector('a#like-button')
                       .addEventListener('click', function () {
-                        query.find().then(function (todo) {
-                          var obj = todo[0];
-                          obj.increment('value');
-                          return obj.save();
-                        }).then(function (obj) {
-                          el.innerHTML = obj.get('value');
-                        }).catch(function (err) {
-                          alert('Thanks for loving me!\nWill you still love me tomorrow?')
-                        });
-                      })
-                    query.find().then(function (todo) {
-                      el.innerHTML = todo[0].get('value');
-                    }).catch(function (err) {
-                      el.innerHTML = 'Error: ' + err.message.split('.')[0] + '.';
-                    })
+                        fetch('https://blog.swwind.me/count/bGlrZQ')
+                        .then(res => res.json())
+                        .then(res => el.innerText = res.data);
+                      });
                   </script>
                 </section>
                 <section>
